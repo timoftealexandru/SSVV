@@ -69,4 +69,8 @@ public class MemberRepository {
 		 
 		 return entries;
 	 }
+
+	public List<Member> getAllMembers(){
+		return this.members;
+	 }
 }
