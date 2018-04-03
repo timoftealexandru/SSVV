@@ -24,7 +24,8 @@ public class Member {
 	public String getId() {
 		return this.id;
 	}
-	
+	public Integer getMonthlyValue() {return this.monthlyValue; }
+	public Integer getContributedValue() {return this.contributedValue; }
 	public String toString() {
 		return this.name + " " + this.id;
 	}
