@@ -96,8 +96,6 @@ public class AppTest
         } catch (Error e) {
             assertEquals(e.getMessage(), "Member exist!");
         }
-
-
     }
 
     public void testMemberName() {
@@ -113,6 +111,27 @@ public class AppTest
     public void testMemberContributedValue() {
         Member member = new Member("Nicu", "2", 100, 150);
         assert (member.getContributedValue() == 150);
+    }
+
+    public void testConditionAddMemberTrue() {
+        Member member1 = new Member("Nicu", "1", 100, 150);
+        MemberRepository repo = new MemberRepository();
+        repo.addMember(member1);
+        List<Member> members = repo.getAllMembers();
+        Member last = members.get(members.size() -1);
+        assert (last == member1);
+    }
+
+    public void testConditionAddMemberFalse() {
+        Member member = new Member("Nicu", "1", 100, 150);
+        MemberRepository repo = new MemberRepository();
+        try {
+            repo.addMember(member);
+            repo.addMember(member);
+            fail("Should throw error");
+        } catch (Error e) {
+            assertEquals(e.getMessage(), "Member exist!");
+        }
     }
 
 }
